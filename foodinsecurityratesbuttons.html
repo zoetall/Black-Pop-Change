@@ -67,29 +67,29 @@ function myStyle(feature) {
         fillOpacity: 0.7
     };
 }
-//     function Style(feature) {
-//     return {
-//         fillColor: getColor(feature.properties['NC2015FoodSecurity_2015 Food Insecurity Rate' ]),
-//         weight: 2,
-//         opacity: 1,
-//         color: 'white',
-//         dashArray: '3',
-//         fillOpacity: 0.7
-//     };
-// }
-//     function mystyle(feature) {
-//     return {
-//         fillColor: getColor(feature.properties['NC2020FoodSecurity_Overall Food Insecurity Rate (1 Year)' ]),
-//         weight: 2,
-//         opacity: 1,
-//         color: 'white',
-//         dashArray: '3',
-//         fillOpacity: 0.7
-//     };
-// }
+    function Style(feature) {
+    return {
+        fillColor: getColor(feature.properties['NC2015FoodSecurity_2015 Food Insecurity Rate' ]),
+        weight: 2,
+        opacity: 1,
+        color: 'white',
+        dashArray: '3',
+        fillOpacity: 0.7
+    };
+}
+    function mystyle(feature) {
+    return {
+        fillColor: getColor(feature.properties['NC2020FoodSecurity_Overall Food Insecurity Rate (1 Year)' ]),
+        weight: 2,
+        opacity: 1,
+        color: 'white',
+        dashArray: '3',
+        fillOpacity: 0.7
+    };
+}
 var geojson= L.geoJSON(simplifiedfood2010, {style: myStyle},).addTo(map);
-// var geojson= L.geoJSON(simplifiedfood2015, {style: Style}).addTo(map);
-// var geojson= L.geoJSON(simplifiedfood2020, {style: mystyle}).addTo(map);
+var geojson= L.geoJSON(simplifiedfood2015, {style: Style}).addTo(map);
+var geojson= L.geoJSON(simplifiedfood2020, {style: mystyle}).addTo(map);
 
 var legend = L.control({position: 'topright'});
 
@@ -97,29 +97,20 @@ legend.onAdd = function (map) {
 
     var div = L.DomUtil.create('div', 'info legend'),
         grades = 
-        // [0, 0.12, 0.13, 0.14, 0.1457, 0.15, 0.1686, 0.2],
-       [ <span style="color: #ffffe5">0</span>,
-        <span style="color:#fff7bc">0.12</span>,
-        <span style="color:#fee391">0.13</span>,
-        <span style="color:#fec44f">0.14</span>,
-        <span style="color:#fe9929">.1457</span>,
-        <span style="color:#ec7014">0.15</span>,
-        <span style="color:#cc4c02">0.1686</span>,
-        <span style="color:#993404">0.2</span>] ,
+        [0, 0.12, 0.13, 0.14, 0.1457, 0.15, 0.1686, 0.2],
+ 
 
         labels = []; 
     
-
-       // loop through our density intervals and generate a label with a colored square for each interval
-    //    for (var i = 0; i < grades.length; i++) {
+       for (var i = 0; i < grades.length; i++) {
     
-    //     div.innerHTML +=
-    //         '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
-    //         grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+        div.innerHTML +=
+            '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
+            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
     }
 
     return div;
-// };
+};
 
 legend.addTo(map);
 </script>
