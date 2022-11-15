@@ -22,6 +22,35 @@
         height:500px;
         background-color: black;
     }
+    .legend {
+
+line-height: 
+18px;
+
+color: 
+#555;
+
+}
+
+.legend 
+i {
+
+width: 
+18px;
+
+height: 
+18px;
+
+float: 
+left;
+
+margin-right: 
+8px;
+
+opacity: 
+0.7;
+
+}
 </style>
 <body>
   <div id="map"></div>
@@ -59,7 +88,7 @@ function getColor(d) {
 }
 function myStyle(feature) {
     return {
-        fillColor: getColor(feature.properties['NC2010FoodSecurity_2010 Food Insecurity Rate' ]),
+        fillColor: getColor(feature.properties['FoodInsecurityRate' ]),
         weight: 2,
         opacity: 1,
         color: 'white',
@@ -67,26 +96,26 @@ function myStyle(feature) {
         fillOpacity: 0.7
     };
 }
-    function Style(feature) {
-    return {
-        fillColor: getColor(feature.properties['NC2015FoodSecurity_2015 Food Insecurity Rate' ]),
-        weight: 2,
-        opacity: 1,
-        color: 'white',
-        dashArray: '3',
-        fillOpacity: 0.7
-    };
-}
-    function mystyle(feature) {
-    return {
-        fillColor: getColor(feature.properties['NC2020FoodSecurity_Overall Food Insecurity Rate (1 Year)' ]),
-        weight: 2,
-        opacity: 1,
-        color: 'white',
-        dashArray: '3',
-        fillOpacity: 0.7
-    };
-}
+//     function Style(feature) {
+//     return {
+//         fillColor: getColor(feature.properties['NC2015FoodSecurity_2015 Food Insecurity Rate' ]),
+//         weight: 2,
+//         opacity: 1,
+//         color: 'white',
+//         dashArray: '3',
+//         fillOpacity: 0.7
+//     };
+// }
+//     function mystyle(feature) {
+//     return {
+//         fillColor: getColor(feature.properties['NC2020FoodSecurity_Overall Food Insecurity Rate (1 Year)' ]),
+//         weight: 2,
+//         opacity: 1,
+//         color: 'white',
+//         dashArray: '3',
+//         fillOpacity: 0.7
+//     };
+// }
 var geojson= L.geoJSON(simplifiedfood2010, {style: myStyle},).addTo(map);
 var geojson= L.geoJSON(simplifiedfood2015, {style: Style}).addTo(map);
 var geojson= L.geoJSON(simplifiedfood2020, {style: mystyle}).addTo(map);
@@ -105,10 +134,10 @@ legend.onAdd = function (map) {
        for (var i = 0; i < grades.length; i++) {
     
         div.innerHTML +=
-            '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
+            '<i style= "opacity = 1; background:' + getColor(grades[i] + 1) + '"></i> ' +
             grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
     }
-
+console.log(div.innerHTML)
     return div;
 };
 
