@@ -104,7 +104,7 @@ legend.onAdd = function (map) {
        for (var i = 0; i < grades.length; i++) {
     
         div.innerHTML +=
-            '<i style= "opacity = 1; background:' + getColor(grades[i] + 1) + '"></i> ' +
+            '<i style= "opacity = 1; background:' + getColor(grades[i]) + '"></i> ' +
             grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
     }
 console.log(div.innerHTML)
